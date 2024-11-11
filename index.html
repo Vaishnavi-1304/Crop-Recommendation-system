@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lan="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewpoint" content="width=device-width, initial-scale=1.0"/>
+        <title>Agri Pulse- Crop Recommendation System</title>
+        <link rel="stylesheet" href="style.css"/>
+        <link rel="stylesheet" href="stylelogin.css"/> 
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <div class="logo">
+                    <img src="logo.png" alt="AgriPulse Logo" height="100"/>
+                </div>
+                <div class="header-text">
+                    <h1>Agri Pulse!</h1>
+                    <p>Where every crop finds its beat</p>
+                </div>
+                <div class="right-spacer"></div>
+            </div>
+        </header>
+        <section class="fullcontainer" id="aboutSection" style="padding-top: 180px;">
+            <div class="container">
+                <p align="center">
+                    Welcome to AgriPulse! We are here to help you take a step towards effective farming!
+                </p>
+                <p align="center">
+                    How may we help you today?
+                </p>
+                <div class="cards">
+                    <div class="donationBox">
+                        <div class="title">Crop Recommendation</div>
+                        <p>Discover the perfect crops for your land and climate with our expert advice. Maximize yields and minimize risks with data-driven recommendations.</p>
+                        <button>Recommend Crops</button>
+                        <div id="cropPopup" class="popup">
+                            <div class="popup-content">
+                                <span class="close-btn" onclick="closePopup()">&times;</span>
+                                <p id="popupText"> Every Crop has its best friend, soil, fertilizer, rain etc.. We are here to find a crop for your soil! </p>
+                                <p id="popupText">Let us begin with a simple question.</p>
+                                <p id="popupText"> Do you know what is in your soil?</p>
+                                <button onclick="openFullInputPage()"><a href="input.html">YES I KNOW MY SOIL WELL</a></button>
+                                <button onclick="openSoilTypePage()"><a href="soiltype_input.html"> I ONLY KNOW THE TYPE OF THE SOIL</a></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="volunteerBox">
+                        <div class="title">Tips for farming</div>
+                        <p>Improve crop quality and productivity with expert farming tips. Learn innovative techniques for irrigation, and pest control etc..</p>
+                        <button>Farming tips</button>
+                    </div>
+                    <div class="scholarshipBox">
+                        <div class="title">Sales and Profits</div>
+                        <p>Stay ahead of market trends and optimize your profits. Get real-time insights on crop prices, demand, and sales strategies.</p>
+                        <button>Check sales and profits</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script src="script.js"></script>
+    </body>
+</html>

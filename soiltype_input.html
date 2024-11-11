@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soil Type Input</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Select Soil Type</h2>
+        <form id="soilTypeForm">
+            <label for="soilType">Soil Type:</label>
+            <select id="soilType" name="soil_type" required>
+                <option value="sandy">Sandy</option>
+                <option value="clay">Clay</option>
+                <option value="silt">Silt</option>
+                <option value="loamy">Loamy</option>
+                <option value="saline">Saline</option>
+                <option value="peaty">Peaty</option>
+                <option value="chalky">Chalky</option>
+            </select>
+            <button type="submit">Get Recommendation</button>
+        </form>
+        <div id="soilPredictionResult"></div>
+    </div>
+
+    <script>
+        document.getElementById('soilTypeForm').onsubmit = async function(event) {
+            event.preventDefault();
+
+            const soilTypeData = {
+                soil_type: document.getElementById('soilType').value
+            };
+
+            const response = await fetch('http://127.0.0.1:5000/predict/soil-type', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(soilTypeData)
+            });
+
+            const result = await response.json();
+            document.getElementById('soilPredictionResult').innerText = "Recommended Crop: " + result.recommended_crop;
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Soil Input</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Enter Detailed Soil Data</h2>
+        <form id="fullInputForm">
+            <label for="nitrogen">Nitrogen Composition:</label>
+            <input type="number" id="nitrogen" name="nitrogen" required>
+
+            <label for="phosphorus">Phosphorus Composition:</label>
+            <input type="number" id="phosphorus" name="phosphorus" required>
+
+            <label for="potassium">Potassium Composition:</label>
+            <input type="number" id="potassium" name="potassium" required>
+
+            <label for="rainfall">Rainfall:</label>
+            <input type="number" id="rainfall" name="rainfall" required>
+
+            <label for="ph">pH:</label>
+            <input type="number" id="ph" name="ph" required>
+
+            <label for="temperature">Temperature:</label>
+            <input type="number" id="temperature" name="temperature" required>
+
+            <label for="humidity">Humidity:</label>
+            <input type="number" id="humidity" name="humidity" required>
+
+            <button type="submit">Get Recommendation</button>
+        </form>
+        <div id="predictionResult"></div>
+    </div>
+
+    <script>
+        document.getElementById('fullInputForm').onsubmit = async function(event) {
+            event.preventDefault();
+
+            const inputData = {
+                nitrogen: document.getElementById('nitrogen').value,
+                phosphorus: document.getElementById('phosphorus').value,
+                potassium: document.getElementById('potassium').value,
+                rainfall: document.getElementById('rainfall').value,
+                ph: document.getElementById('ph').value,
+                temperature: document.getElementById('temperature').value,
+                humidity: document.getElementById('humidity').value
+            };
+
+            const response = await fetch('http://127.0.0.1:5000/predict', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(inputData)
+            });
+
+            const result = await response.json();
+            document.getElementById('predictionResult').innerText = "Recommended Crop: " + result.recommended_crop;
+        };
+    </script>
+</body>
+</html>
